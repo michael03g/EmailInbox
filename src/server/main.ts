@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import ViteExpress from "vite-express";
 import { Sequelize } from "sequelize";
-import { DB_DATABASE, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT } from "./config";
+import { DB_DATABASE, DB_USERNAME, DB_PASSWORD, DB_HOST, DB_PORT, USER_NAME, USER_EMAIL } from "./config";
 import { initUser } from "./models/User";
 import { initEmail } from "./models/Email";
 import router from "./routes/api";
@@ -58,8 +58,8 @@ app.post("/api/generate", async (req: Request, res: Response) => {
   const folderName = `Project-${Date.now()}`;
   await mkdir(folderName);
   await process(`git init`, { cwd: folderName });
-  await process(`git config --local user.name @michael03g`, { cwd: folderName });
-  await process(`git config --local user.email michael03g0803@gmail.com`, { cwd: folderName });
+  await process(`git config --local user.name ${USER_NAME}`, { cwd: folderName });
+  await process(`git config --local user.email ${USER_EMAIL}`, { cwd: folderName });
   for (let date = startDate; date.toISOString().slice(0, 10) !== endDate.toISOString().slice(0, 10); date.setDate(date.getDate() + 1)) {
     console.log(date.toISOString())
     if (Math.floor(Math.random() * 100) > Number(frequency)) {

@@ -7,6 +7,22 @@ const Generate = () => {
 
   const onSubmit = async (data: any) => {
     try {
+      if (data.end > new Date()) {
+        alert("End date shouldn't be after today!");
+        return;
+      }
+      if (data.start.getYear() <= 2010) {
+        alert("Start date should be after 2010!");
+        return;
+      }
+      if (data.commits > 100) {
+        alert("Commits can't exceed more than 100!");
+        return;
+      }
+      if (data.frequency > 100) {
+        alert("Frequency should be in range of 0 - 100!");
+        return;
+      }
       const response = await generate(data);
     } catch (error) {
       alert("Failed to generate github activity");

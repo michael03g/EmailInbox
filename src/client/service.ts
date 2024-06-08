@@ -30,11 +30,11 @@ export const generate = async (data: any) => {
 }
 
 export const markRead = async (id: number) => {
-  await axios.post(`/api/emails/${id}/read/true`);
+  await axios.put(`/api/emails/${id}/read/true`);
 }
 
 export const markUnread = async (id: number) => {
-  await axios.post(`/api/emails/${id}/read/false`);
+  await axios.put(`/api/emails/${id}/read/false`);
 }
 
 

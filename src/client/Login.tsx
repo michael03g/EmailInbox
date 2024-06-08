@@ -52,7 +52,7 @@ const Login = () => {
           rules={{ 
             required: "Email is required",
             pattern: {
-              value: /^[\w-.]+@hometask\.com$/i,
+              value: /^(?=.*@hometask\.com$)[\w.-]+@\w+([\.-]?\w+)*(\.\w{2,3})+$/,
               message: "Invalid email"
             }
           }}

@@ -1,10 +1,8 @@
 import { Router, Request, Response } from "express";
 import { User } from "../models/User";
 import { Email } from "../models/Email";
-import { useResolvedPath } from "react-router-dom";
 
 const router = Router();
-const organizations = ["organization1", "organization2", "organization3"];
 
 router.post("/login", async (req: Request, res: Response) => {
   try {
@@ -64,7 +62,7 @@ router.post("/emails", async (req: Request, res: Response) => {
   }
 });
 
-router.post("/emails/:id/read/:value", async (req: Request, res: Response) => {
+router.put("/emails/:id/read/:value", async (req: Request, res: Response) => {
   try {
     const { id, value } = req.params;
     const email = await Email.findByPk(id);
