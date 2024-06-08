@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout";
 import Login from "./Login";
 import Email from "./Email";
+import Generate from "./Generate";
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Login />} />
-          <Route path="emails" element={<Email />} />
+          <Route path="/emails" element={<Email />} />
+          <Route path="/generate" element={<Generate />} />
         </Route>
       </Routes>
     </BrowserRouter>

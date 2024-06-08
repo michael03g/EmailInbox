@@ -10,6 +10,25 @@ export const loginUser = async (data: any) => {
   return res.data;
 }
 
+export const generate = async (data: any) => {
+  try {
+    const response = await axios.post("/api/generate", data, {
+      responseType: "blob",
+    });
+    const blob = new Blob([response.data], { type: "application/octet-stream" });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.setAttribute("download", "data.zip");
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  } catch (error) {
+    alert("Failed to generate GitHub activity");
+  }
+}
+
 export const markRead = async (id: number) => {
   await axios.post(`/api/emails/${id}/read/true`);
 }

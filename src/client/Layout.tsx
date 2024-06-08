@@ -10,6 +10,8 @@ const Layout = () => {
         return "User Login";
       case "/emails":
         return "Email Inbox";
+      case "/generate":
+        return "Generate GitHub Activity";
       default:
         return "";
     }
@@ -20,8 +22,9 @@ const Layout = () => {
       <div className="header">
         <div>{description}</div>
         <div className="navbar">
-          <Link to="/">{location.pathname === "/" ? "Login" : "Logout"}</Link>
+          <Link to="/">{location.pathname === "/" || location.pathname === "/generate" ? "Login" : "Logout"}</Link>
           <Link to="/emails">Email Inbox</Link>
+          <Link to="/generate">Generate GitHub Acitivty</Link>
         </div>
       </div>
       <div className="content">
